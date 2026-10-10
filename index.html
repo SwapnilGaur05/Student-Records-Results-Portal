@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f5f6">
+    <title>Student Records &amp; Results</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#" aria-label="Student results home">
+          <span class="brand-icon" aria-hidden="true">SR</span>
+          <span>
+            <strong>Student Records &amp; Results</strong>
+            <small>Academic records portal</small>
+          </span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-button active" data-view="registration" type="button">Registration &amp; marks</button>
+          <button class="nav-button" data-view="records" type="button">Student records <span class="nav-count" id="nav-count">0</span></button>
+          <button class="nav-button" data-view="summary" type="button">Class summary</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="view active" id="registration-view" aria-labelledby="registration-title">
+        <form id="registration-form">
+          <section class="card">
+            <div class="card-heading">
+              <h1 id="registration-title">1. Student personal &amp; academic details</h1>
+            </div>
+            <div class="details-grid">
+              <div class="field">
+                <label for="roll-number">Roll number / Student ID <span>*</span></label>
+                <input id="roll-number" name="rollNumber" type="text" maxlength="24" placeholder="e.g. CS2026101" required>
+              </div>
+              <div class="field">
+                <label for="name">Full name <span>*</span></label>
+                <input id="name" name="name" type="text" maxlength="80" placeholder="e.g. Rahul Sharma" required>
+              </div>
+              <div class="field">
+                <label for="email">Email address <span>*</span></label>
+                <input id="email" name="email" type="email" maxlength="120" placeholder="e.g. rahul@college.edu" required>
+              </div>
+              <div class="field">
+                <label for="course">Course / Program <span>*</span></label>
+                <select id="course" name="course" required>
+                  <option value="">Select a program</option>
+                  <option>B.Tech Computer Science &amp; Engineering</option>
+                  <option>B.Tech Information Technology</option>
+                  <option>B.Tech Artificial Intelligence &amp; Data Science</option>
+                  <option>MCA (Master of Computer Applications)</option>
+                  <option>BCA (Bachelor of Computer Applications)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="semester">Semester <span>*</span></label>
+                <select id="semester" name="semester" required>
+                  <option value="">Select semester</option>
+                  <option>Semester 1</option><option>Semester 2</option>
+                  <option>Semester 3</option><option>Semester 4</option>
+                  <option>Semester 5</option><option>Semester 6</option>
+                  <option>Semester 7</option><option>Semester 8</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                  <option value="">Select gender</option>
+                  <option>Female</option><option>Male</option><option>Non-binary</option><option>Prefer not to say</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="date-of-birth">Date of birth <span>*</span></label>
+                <input id="date-of-birth" name="dateOfBirth" type="date" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone number</label>
+                <input id="phone" name="phone" type="tel" maxlength="24" placeholder="e.g. 9876543210">
+              </div>
+              <div class="field">
+                <label for="academic-year">Academic year</label>
+                <input id="academic-year" name="academicYear" type="text" maxlength="20" placeholder="2026–2027">
+              </div>
+            </div>
+          </section>
+
+          <section class="card marks-card">
+            <div class="card-heading marks-heading">
+              <div>
+                <h2>2. Subject marks entry <span class="scale">(scale: 0 to 100)</span></h2>
+                <p>Minimum passing requirement: 40 marks per subject and overall aggregate ≥ 40%.</p>
+              </div>
+              <div class="total-chip">Total so far: <strong id="current-total">0</strong> / 600 (<span id="current-percentage">0.00</span>%)</div>
+            </div>
+            <div class="table-scroll">
+              <table class="marks-table">
+                <thead>
+                  <tr><th>#</th><th>Subject</th><th>Max marks</th><th>Min pass</th><th>Marks obtained <span>*</span></th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Agentic AI</td><td>100</td><td>40</td><td><input aria-label="Agentic AI marks" name="agenticAi" type="number" min="0" max="100" step="1" placeholder="0 – 100" required></td></tr>
+                  <tr><td>2</td><td>Fullstack</td><td>100</td><td>40</td><td><input aria-label="Fullstack marks" name="fullstack" type="number" min="0" max="100" step="1" placeholder="0 – 100" required></td></tr>
+                  <tr><td>3</td><td>DSA</td><td>100</td><td>40</td><td><input aria-label="DSA marks" name="dsa" type="number" min="0" max="100" step="1" placeholder="0 – 100" required></td></tr>
+                  <tr><td>4</td><td>SQL/NO SQL</td><td>100</td><td>40</td><td><input aria-label="SQL/NO SQL marks" name="sqlNoSql" type="number" min="0" max="100" step="1" placeholder="0 – 100" required></td></tr>
+                  <tr><td>5</td><td>Linux</td><td>100</td><td>40</td><td><input aria-label="Linux marks" name="linux" type="number" min="0" max="100" step="1" placeholder="0 – 100" required></td></tr>
+                  <tr><td>6</td><td>Python</td><td>100</td><td>40</td><td><input aria-label="Python marks" name="python" type="number" min="0" max="100" step="1" placeholder="0 – 100" required></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="form-message" id="form-message" role="alert"></p>
+            <div class="form-actions">
+              <button class="button secondary" id="reset-form" type="button">Clear form</button>
+              <button class="button primary" id="submit-button" type="submit">Register student</button>
+            </div>
+          </section>
+        </form>
+      </section>
+
+      <section class="view" id="records-view" aria-labelledby="records-title" hidden>
+        <div class="view-heading">
+          <div>
+            <h1 id="records-title">Registered student records</h1>
+            <p>Search, review, or update registered students.</p>
+          </div>
+          <div class="toolbar">
+            <input id="import-file" type="file" accept="application/json,.json" hidden>
+            <button class="button secondary" id="import-button" type="button">Import JSON</button>
+            <button class="button secondary" id="export-button" type="button">Export JSON</button>
+            <button class="button secondary" id="demo-button" type="button">Load sample records</button>
+            <button class="button primary" id="add-student-button" type="button">Add student</button>
+          </div>
+        </div>
+        <p class="form-message page-message" id="records-message" role="status"></p>
+        <div class="filter-bar">
+          <input id="search-records" type="search" placeholder="Search by student name or roll number…" aria-label="Search student records">
+          <select id="course-filter" aria-label="Filter by course"><option value="">All courses</option></select>
+          <div class="filter-tabs" role="group" aria-label="Filter by result">
+            <button class="filter-button active" data-filter="all" type="button">All (<span id="all-count">0</span>)</button>
+            <button class="filter-button" data-filter="Pass" type="button">Pass (<span id="pass-count">0</span>)</button>
+            <button class="filter-button" data-filter="Fail" type="button">Fail (<span id="fail-count">0</span>)</button>
+          </div>
+        </div>
+        <div class="card records-card">
+          <div class="table-scroll">
+            <table class="records-table">
+              <thead><tr><th>Roll no</th><th>Student name</th><th>Course &amp; term</th><th>Total marks</th><th>Percentage</th><th>Grade</th><th>Result</th><th>Actions</th></tr></thead>
+              <tbody id="records-body"></tbody>
+            </table>
+          </div>
+          <p class="empty-state" id="empty-records" hidden>No student records match your search.</p>
+        </div>
+      </section>
+
+      <section class="view" id="summary-view" aria-labelledby="summary-title" hidden>
+        <div class="view-heading summary-title">
+          <div>
+            <h1 id="summary-title">Academic cohort summary</h1>
+            <p>Aggregated class performance, pass percentages, and subject averages.</p>
+          </div>
+        </div>
+        <div class="stat-grid">
+          <article class="stat-card"><span>Total enrolled</span><strong id="summary-enrolled">0</strong><small>Registered records</small></article>
+          <article class="stat-card"><span>Pass percentage</span><strong class="green-text" id="summary-pass-rate">0%</strong><small id="summary-pass-count">0 Passed / 0 Failed</small></article>
+          <article class="stat-card"><span>Class average</span><strong id="summary-average">0.0%</strong><small>Across all subjects</small></article>
+          <article class="stat-card"><span>Highest scorer</span><strong class="highest-name" id="summary-highest">—</strong><small id="summary-highest-score">No records yet</small></article>
+        </div>
+        <div class="summary-grid">
+          <article class="card summary-card">
+            <h2>Grade distribution</h2>
+            <table><thead><tr><th>Grade</th><th>Count</th><th>% of class</th></tr></thead><tbody id="grade-distribution"></tbody></table>
+          </article>
+          <article class="card summary-card">
+            <h2>Enrollment by degree</h2>
+            <table><thead><tr><th>Program</th><th>Students</th></tr></thead><tbody id="course-distribution"></tbody></table>
+          </article>
+        </div>
+        <article class="card subject-summary">
+          <h2>Subject performance averages</h2>
+          <div class="table-scroll">
+            <table><thead><tr><th>Subject name</th><th>Class average (/100)</th><th>Subject pass rate</th></tr></thead><tbody id="subject-summary"></tbody></table>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Student Records &amp; Results</span>
+      <span>Records are saved in this browser.</span>
+    </footer>
+
+    <dialog id="marksheet-dialog" class="marksheet-dialog">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">STUDENT MARKSHEET</p><h2 id="marksheet-name"></h2></div>
+        <button class="icon-button" id="close-dialog" type="button" aria-label="Close marksheet">×</button>
+      </div>
+      <p class="dialog-student-details" id="marksheet-details"></p>
+      <div class="table-scroll">
+        <table><thead><tr><th>Subject</th><th>Marks</th><th>Maximum</th></tr></thead><tbody id="marksheet-subjects"></tbody></table>
+      </div>
+      <div class="marksheet-total" id="marksheet-total"></div>
+    </dialog>
+  </body>
+</html>
