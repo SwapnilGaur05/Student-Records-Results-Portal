@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { 
-  ChevronDown, 
   Menu, 
   X
 } from 'lucide-react'
@@ -33,48 +32,13 @@ function PayPalLogo({ className = "h-8 w-auto" }) {
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('Business') // Default as in Photo 2
-  const [openDropdown, setOpenDropdown] = useState(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navItems = [
-    {
-      title: 'Personal',
-      hasDropdown: true,
-      items: [
-        { label: 'PayPal App & Digital Wallet', desc: 'Shop, send, and manage payments on the go' },
-        { label: 'Pay in 4 & Monthly Installments', desc: 'Flexible buy now, pay later options' },
-        { label: 'Send & Request Money', desc: 'Transfer money to friends and family with zero fuss' },
-        { label: 'Deals & Cash Back', desc: 'Exclusive rewards and cashback offers' },
-      ],
-    },
-    {
-      title: 'Business',
-      hasDropdown: true,
-      items: [
-        { label: 'PayPal Open', desc: 'Unified commerce platform for modern businesses' },
-        { label: 'Accept Online Payments', desc: 'Checkout, credit cards, Apple Pay, Google Pay' },
-        { label: 'Point of Sale & In-Person', desc: 'Card readers, contactless QR codes, and hardware' },
-        { label: 'Business Invoicing & Capital', desc: 'Send smart invoices and access fast funding' },
-      ],
-    },
-    {
-      title: 'Partners',
-      hasDropdown: true,
-      items: [
-        { label: 'Solution Partners', desc: 'Integrate with top eCommerce platforms like Shopify, WooCommerce' },
-        { label: 'Platform & Marketplace APIs', desc: 'Build multi-party payments for marketplaces' },
-        { label: 'Partner Directory', desc: 'Find certified development and integration agencies' },
-      ],
-    },
-    {
-      title: 'Useful Info',
-      hasDropdown: true,
-      items: [
-        { label: 'Help Center & Support', desc: 'Answers to frequently asked questions and ticket support' },
-        { label: 'Security & Buyer Protection', desc: '24/7 fraud monitoring and purchase protection' },
-        { label: 'Fees & Pricing Table', desc: 'Clear, transparent domestic and international rates' },
-      ],
-    },
+    { title: 'Personal', href: '#' },
+    { title: 'Business', href: '#' },
+    { title: 'Partners', href: '#' },
+    { title: 'Useful Info', href: '#' },
   ]
 
   // Content configuration for each segmented mode
@@ -114,49 +78,13 @@ export default function App() {
               {/* Desktop Nav Items */}
               <nav className="hidden lg:flex items-center space-x-1">
                 {navItems.map((item) => (
-                  <div 
-                    key={item.title} 
-                    className="relative"
-                    onMouseEnter={() => setOpenDropdown(item.title)}
-                    onMouseLeave={() => setOpenDropdown(null)}
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    className="px-3 py-2 text-[15px] font-semibold text-[#0c0c0d] hover:text-black hover:bg-gray-50 rounded-full transition-colors"
                   >
-                    <button
-                      type="button"
-                      onClick={() => setOpenDropdown(openDropdown === item.title ? null : item.title)}
-                      className={`flex items-center space-x-1 px-3 py-2 text-[15px] font-semibold rounded-full transition-colors ${
-                        openDropdown === item.title
-                          ? 'text-black bg-gray-100/70'
-                          : 'text-[#0c0c0d] hover:text-black hover:bg-gray-50'
-                      }`}
-                    >
-                      <span>{item.title}</span>
-                      <ChevronDown 
-                        className={`w-3.5 h-3.5 stroke-[2.5] text-gray-500 transition-transform duration-200 ${
-                          openDropdown === item.title ? 'rotate-180 text-black' : ''
-                        }`} 
-                      />
-                    </button>
-
-                    {/* Dropdown Menu */}
-                    {openDropdown === item.title && (
-                      <div className="absolute left-0 mt-1 w-80 bg-white rounded-2xl shadow-xl border border-gray-100 p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                        {item.items.map((sub, idx) => (
-                          <a
-                            key={idx}
-                            href="#"
-                            className="block p-3 rounded-xl hover:bg-gray-50 transition-colors group"
-                          >
-                            <p className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                              {sub.label}
-                            </p>
-                            <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">
-                              {sub.desc}
-                            </p>
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                    {item.title}
+                  </a>
                 ))}
               </nav>
             </div>
@@ -199,26 +127,15 @@ export default function App() {
 
         {/* Mobile menu dropdown */}
         {mobileMenuOpen && (
-          <div className="sm:hidden border-t border-gray-100 bg-white px-4 pt-3 pb-6 space-y-3">
+          <div className="sm:hidden border-t border-gray-100 bg-white px-4 pt-3 pb-6 space-y-2">
             {navItems.map((item) => (
-              <div key={item.title} className="border-b border-gray-50 pb-2">
-                <button
-                  onClick={() => setOpenDropdown(openDropdown === item.title ? null : item.title)}
-                  className="w-full flex items-center justify-between text-base font-semibold py-2 text-gray-900"
-                >
-                  <span>{item.title}</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.title ? 'rotate-180' : ''}`} />
-                </button>
-                {openDropdown === item.title && (
-                  <div className="pl-3 space-y-2 mt-1">
-                    {item.items.map((sub, idx) => (
-                      <a key={idx} href="#" className="block py-1 text-sm text-gray-600">
-                        {sub.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <a
+                key={item.title}
+                href={item.href}
+                className="block text-base font-semibold py-2 text-gray-900 border-b border-gray-50"
+              >
+                {item.title}
+              </a>
             ))}
             <div className="pt-2 flex flex-col space-y-2">
               <button className="w-full py-2.5 text-sm font-semibold text-white bg-black rounded-full">
