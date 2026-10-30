@@ -2,17 +2,7 @@ import React, { useState } from 'react'
 import { 
   ChevronDown, 
   Menu, 
-  X, 
-  ArrowRight, 
-  CreditCard, 
-  ShieldCheck, 
-  Globe, 
-  Code2, 
-  ExternalLink,
-  Store,
-  Terminal,
-  FileCode2,
-  Cpu
+  X
 } from 'lucide-react'
 
 // Authentic PayPal Double-P Logo SVG Component
@@ -301,58 +291,7 @@ export default function App() {
             {current.secondaryBtn}
           </button>
         </div>
-
-        {/* Secondary Feature Grid Preview for Rich Context */}
-        <div className="mt-20 max-w-5xl w-full grid grid-cols-1 md:grid-cols-3 gap-6 text-left border-t border-gray-100 pt-14">
-          <div className="p-6 rounded-2xl bg-gray-50/60 hover:bg-gray-50 transition border border-gray-100">
-            <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mb-4 text-[#003087]">
-              <CreditCard className="w-5 h-5" />
-            </div>
-            <h3 className="font-bold text-lg text-gray-900">Seamless Payments</h3>
-            <p className="text-sm text-gray-600 mt-2">
-              Accept credit cards, debit cards, PayPal, Venmo, Apple Pay, and local payment methods with one checkout integration.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-gray-50/60 hover:bg-gray-50 transition border border-gray-100">
-            <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mb-4 text-[#0079C1]">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <h3 className="font-bold text-lg text-gray-900">Enterprise Security</h3>
-            <p className="text-sm text-gray-600 mt-2">
-              Built-in fraud detection with AI risk engines, automatic chargeback protection, and end-to-end PCI compliance.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-gray-50/60 hover:bg-gray-50 transition border border-gray-100">
-            <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mb-4 text-[#00457C]">
-              <Globe className="w-5 h-5" />
-            </div>
-            <h3 className="font-bold text-lg text-gray-900">Global Reach</h3>
-            <p className="text-sm text-gray-600 mt-2">
-              Expand across 200+ markets and 100+ currencies with real-time conversion and localized payment methods.
-            </p>
-          </div>
-        </div>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-100 bg-white py-8 text-xs text-gray-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-6">
-            <span className="font-semibold text-gray-700">PayPal</span>
-            <a href="#" className="hover:underline">Help</a>
-            <a href="#" className="hover:underline">Contact</a>
-            <a href="#" className="hover:underline">Fees</a>
-            <a href="#" className="hover:underline">Security</a>
-            <a href="#" className="hover:underline">Apps</a>
-            <a href="#" className="hover:underline">Shop</a>
-          </div>
-          <div className="flex items-center space-x-4 text-gray-400">
-            <span>© 1999–2026 PayPal, Inc. All rights reserved.</span>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
