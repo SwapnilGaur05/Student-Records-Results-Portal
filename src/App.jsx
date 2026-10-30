@@ -68,16 +68,6 @@ export default function App() {
       ],
     },
     {
-      title: 'Developer',
-      hasDropdown: true,
-      items: [
-        { label: 'Developer Docs & API Reference', desc: 'Complete REST API reference and guides' },
-        { label: 'Sandbox Environment', desc: 'Test mock transactions and webhook events safely' },
-        { label: 'SDKs & Code Samples', desc: 'JavaScript, Python, PHP, Ruby, and Node.js SDKs' },
-        { label: 'GraphQL & Webhooks', desc: 'Real-time notifications and streamlined queries' },
-      ],
-    },
-    {
       title: 'Partners',
       hasDropdown: true,
       items: [
@@ -113,14 +103,6 @@ export default function App() {
       desc: 'PayPal Open unifies your PayPal business solutions to help you get paid, get growing, and get ahead.',
       primaryBtn: 'Sign Up',
       secondaryBtn: 'Contact Sales',
-    },
-    Developer: {
-      // Photo 1 emphasis
-      title: 'PayPal Developer',
-      subtitle: 'Build seamless commerce experiences',
-      desc: 'Explore robust APIs, SDKs, and sandbox tools designed to simplify payments, subscriptions, and payouts for engineering teams.',
-      primaryBtn: 'Get API Credentials',
-      secondaryBtn: 'Explore Docs',
     },
   }
 
@@ -259,14 +241,14 @@ export default function App() {
 
       {/* Hero Section */}
       <main className="flex-1 flex flex-col items-center justify-start pt-10 sm:pt-14 pb-20 px-4 text-center">
-        {/* Segmented Pill Switcher (Matches Photo 1 & Photo 2) */}
-        <div className="inline-flex items-center p-1 bg-[#edf0f5] rounded-full mb-8 shadow-inner transition-all duration-200">
+        {/* Segmented Pill Switcher (Matches Photo 2) */}
+        <div className="inline-flex items-center p-1 bg-[#eaeff5] rounded-full mb-8 shadow-inner transition-all duration-200">
           <button
             type="button"
             onClick={() => setActiveTab('Personal')}
-            className={`px-5 sm:px-6 py-2 text-sm sm:text-[15px] font-semibold rounded-full transition-all duration-200 cursor-pointer ${
+            className={`px-6 py-2 text-sm sm:text-[15px] font-semibold rounded-full transition-all duration-200 cursor-pointer ${
               activeTab === 'Personal'
-                ? 'bg-white text-[#0c0c0d] shadow-sm scale-100'
+                ? 'bg-white text-[#0c0c0d] shadow-sm'
                 : 'text-gray-500 hover:text-[#0c0c0d]'
             }`}
           >
@@ -276,26 +258,13 @@ export default function App() {
           <button
             type="button"
             onClick={() => setActiveTab('Business')}
-            className={`px-5 sm:px-6 py-2 text-sm sm:text-[15px] font-semibold rounded-full transition-all duration-200 cursor-pointer ${
+            className={`px-6 py-2 text-sm sm:text-[15px] font-semibold rounded-full transition-all duration-200 cursor-pointer ${
               activeTab === 'Business'
-                ? 'bg-white text-[#0c0c0d] shadow-sm scale-100'
+                ? 'bg-white text-[#0c0c0d] shadow-sm'
                 : 'text-gray-500 hover:text-[#0c0c0d]'
             }`}
           >
             Business
-          </button>
-
-          {/* Photo 1: Developer pill */}
-          <button
-            type="button"
-            onClick={() => setActiveTab('Developer')}
-            className={`px-5 sm:px-6 py-2 text-sm sm:text-[15px] font-semibold rounded-full transition-all duration-200 cursor-pointer ${
-              activeTab === 'Developer'
-                ? 'bg-white text-[#0c0c0d] shadow-sm scale-100'
-                : 'text-gray-500 hover:text-[#0c0c0d]'
-            }`}
-          >
-            Developer
           </button>
         </div>
 
@@ -387,3 +356,4 @@ export default function App() {
     </div>
   )
 }
+
